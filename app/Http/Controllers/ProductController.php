@@ -43,11 +43,12 @@ class ProductController extends Controller
 
         $product = new Product();
         // On lie la table product et le file added
-        $product->file_id=$entry->id;
+        $product->file_id = $entry->id;
         $product->name = Request::input('name');
         $product->description = Request::input('description');
         $product->price = Request::input('price');
-        $product->imageurl= Request::input('imageurl');
+        $product->imageurl = Request::input('imageurl');
+        $product->quantity = Request::input('quantity');
         $product->save();
 
         return redirect('/admin/products');
