@@ -23,3 +23,4 @@ Route::get('/admin/products', 'ProductController@index');
 Route::get('/admin/product/destroy/{id}', 'ProductController@destroy');
 Route::post('/admin/product/save', 'ProductController@add');
 Route::get('/', 'MainController@index');
+Route::post('/store', 'MainController@store');

@@ -34,11 +34,18 @@
 
                             <div class="item active">
                                 <div class="col-xs-12 col-sm-6 col-md-2">
-                                    <a href="#"> <img src="{{$product->imageurl}}" class="img-responsive center-block"></a>
+                                    <form action="/store" method="POST">
+                                        {!! csrf_field() !!}
+                                        <input type="hidden" name="id" value="{{ $product->id }}">
+                                        <input type="hidden" name="name" value="{{ $product->name }}">
+                                        <input type="hidden" name="price" value="{{ $product->price }}">
+
+                                   <a href="#"> <img src="{{$product->imageurl}}" class="img-responsive center-block"></a>
                                     <h4 class="text-center">{{$product->name}}</h4>
                                     <h5 class="text-center"><label>${{$product->price}}</label></h5>
                                     <h6 class="text-center">{{$product->description}}</h6>
-                                    <a href="/addProduct/{{$product->id}}" class="btn btn-success btn-product"><span class="fa fa-shopping-cart"></span> Buy</a>
+                                        <input type="submit" class="btn btn-success btn-lg" value="Add to Cart">
+                                    </form>
                                 </div>
 
                             </div>
