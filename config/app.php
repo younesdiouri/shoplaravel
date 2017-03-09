@@ -181,6 +181,7 @@ return [
          * Manually added providers
          */
         Barryvdh\Debugbar\ServiceProvider::class,
+        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
 
     ],
 
@@ -234,6 +235,7 @@ return [
          * manually added aliases
          */
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
 
     ],
 
