@@ -26,13 +26,19 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    @if(!Auth::user())
-                        <li><a href="/auth/login">Login</a></li>
-                        <li><a href="/auth/register">Signup</a></li>
-                    @else
-                        <li><a href="/order">My Order <span class="fa fa-briefcase"></span></a></li>
-                        <li><a href="/cart">Cart <span class="fa fa-shopping-cart"></span></a></li>
-                        <li><a href="/auth/logout">Logout {{ Auth::user()->name}}</a></li>
+
+                        @if (Route::has('login'))
+
+                                @if (Auth::check())
+                                   <li> <a href="{{ url('/') }}">Home</a></li>
+                            <li><a href="/order">My Order <span class="fa fa-briefcase"></span></a></li>
+                            <li><a href="cart.blade.php">Cart <span class="fa fa-shopping-cart"><?php foreach(Cart::content() as $row) :?><strong><?php echo (isset($row->qty))?$row->qty:''; ?></strong>
+                                        <?php endforeach;?>
+                                </span></a></li>
+                                @else
+                            <li>  <a href="{{ url('/login') }}">Login</a></li>
+                            <li> <a href="{{ url('/register') }}">Register</a></li>
+                                @endif
                     @endif
                 </ul>
             </div><!-- /.navbar-collapse -->

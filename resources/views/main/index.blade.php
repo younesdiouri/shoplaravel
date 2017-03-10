@@ -11,7 +11,9 @@
 @section('content')
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,700&subset=latin-ext" rel="stylesheet">
 
-
+    @if(Session::has('alert-success'))
+        <p class="col-md-4 alert alert-success">{{ Session::get('alert-success') }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+    @endif
 
     <!--Item slider text-->
     <div class="container">
@@ -42,7 +44,7 @@
 
                                    <a href="#"> <img src="{{$product->imageurl}}" class="img-responsive center-block"></a>
                                     <h4 class="text-center">{{$product->name}}</h4>
-                                    <h5 class="text-center"><label>${{$product->price}}</label></h5>
+                                    <h5 class="text-center"><label>{{$product->price}}</label> €</h5>
                                     <h6 class="text-center">{{$product->description}}</h6>
                                         <input type="submit" class="btn btn-success btn-lg" value="Add to Cart">
                                     </form>
@@ -60,6 +62,7 @@
                     </div>
 
             </div>
+
         </div>
 
 
