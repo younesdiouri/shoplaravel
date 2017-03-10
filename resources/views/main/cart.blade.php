@@ -36,15 +36,14 @@
                                 <span>Status: </span><span class="text-success"><strong>In stock</strong></span>
                             </div>
                         </div></td>
-                    <td class="col-md-1" style="text-align: center">
-                        <input type="text" class="form-control" id="exampleInputEmail1" value="<?php echo $row->qty; ?>">
-                    </td>
+                    <td class="col-md-1 text-center"><strong><?php echo $row->qty; ?></strong></td>
                     <td class="col-md-1 text-center"><strong><?php echo $row->price; ?>€</strong></td>
                     <td class="col-md-1 text-center"><strong><?php echo $row->total; ?>€</strong></td>
                     <td class="col-md-1">
                         <form action="/delete" method="POST">
                             {!! csrf_field() !!}
                             <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
+                            <input type="hidden" name="rowid" value="<?php echo $row->rowId; ?>" />
                         <button type="submit" class="btn btn-danger">
                             <span class="glyphicon glyphicon-remove"></span> Remove
                         </button></td>

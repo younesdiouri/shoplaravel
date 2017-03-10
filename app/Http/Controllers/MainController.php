@@ -39,10 +39,11 @@ class MainController extends Controller
     }
     public function delete(Request $request)
     {
-        $cartItem = Cart::content();
-        $cartItem = Cart::remove($cartItem->rowId);
-        echo $cartItem;
-        //return redirect('/cart');
+        //echo $request->rowid;
+        Cart::remove($request->rowid);
+
+
+        return redirect('/cart');
     }
 }
 
