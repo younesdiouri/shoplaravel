@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Product;
+use Illuminate\Support\Facades\Auth;
 
 class MainController extends Controller
 {
@@ -31,6 +32,18 @@ class MainController extends Controller
    {
        return view('main.cart');
    }
+    public function doLogout()
+    {
+        Auth::logout(); // log the user out of our application
+        return redirect('/login');
+    }
+    public function delete(Request $request)
+    {
+        $cartItem = Cart::content();
+        $cartItem = Cart::remove($cartItem->rowId);
+        echo $cartItem;
+        //return redirect('/cart');
+    }
 }
 
 

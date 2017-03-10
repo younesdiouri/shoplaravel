@@ -24,7 +24,8 @@ Route::get('/admin/product/destroy/{id}', 'ProductController@destroy');
 Route::post('/admin/product/save', 'ProductController@add');
 Route::get('/', 'MainController@index');
 Route::post('/store', 'MainController@store');
+Route::post('/delete', 'MainController@delete');
 Route::get('/cart', 'MainController@cart');
-
+Route::get('logout', 'MainController@doLogout');
 Auth::routes();
 

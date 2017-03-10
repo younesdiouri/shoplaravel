@@ -18,8 +18,8 @@
                 <tr>
                     <th>Product</th>
                     <th>Quantity</th>
-                    <th class="text-center">Price</th>
-                    <th class="text-center">Total</th>
+                    <th class="text-center">Price (HT)</th>
+                    <th class="text-center">Total (TTC)</th>
                     <th> </th>
                 </tr>
                 </thead>
@@ -37,21 +37,25 @@
                             </div>
                         </div></td>
                     <td class="col-md-1" style="text-align: center">
-                        <input type="email" class="form-control" id="exampleInputEmail1" value="<?php echo $row->qty; ?>">
+                        <input type="text" class="form-control" id="exampleInputEmail1" value="<?php echo $row->qty; ?>">
                     </td>
                     <td class="col-md-1 text-center"><strong><?php echo $row->price; ?>€</strong></td>
                     <td class="col-md-1 text-center"><strong><?php echo $row->total; ?>€</strong></td>
                     <td class="col-md-1">
-                        <button type="button" class="btn btn-danger">
+                        <form action="/delete" method="POST">
+                            {!! csrf_field() !!}
+                            <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
+                        <button type="submit" class="btn btn-danger">
                             <span class="glyphicon glyphicon-remove"></span> Remove
                         </button></td>
+                        </form>
                 </tr>
                 <?php endforeach;?>
                 <tr>
                     <td>   </td>
                     <td>   </td>
                     <td>   </td>
-                    <td><h5>Subtotal</h5></td>
+                    <td><h5>Subtotal (HT)</h5></td>
                     <td class="text-right"><h5><strong><?php echo Cart::subtotal(); ?> €</strong></h5></td>
                 </tr>
 
@@ -59,7 +63,7 @@
                     <td>   </td>
                     <td>   </td>
                     <td>   </td>
-                    <td><h3>Total</h3></td>
+                    <td><h3>Total (TTC)</h3></td>
                     <td class="text-right"><h3><strong><?php echo Cart::total(); ?> €</strong></h3></td>
                 </tr>
                 <tr>
@@ -67,7 +71,7 @@
                     <td>   </td>
                     <td>   </td>
                     <td>
-                        <button type="button" class="btn btn-default">
+                        <button type="button" class="btn btn-default" onclick="window.location.href='/'">
                             <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
                         </button></td>
                     <td>
