@@ -182,6 +182,7 @@ return [
          */
         Barryvdh\Debugbar\ServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
+        Laravel\Cashier\CashierServiceProvider::class,
 
     ],
 

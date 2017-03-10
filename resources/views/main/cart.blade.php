@@ -74,9 +74,23 @@
                             <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
                         </button></td>
                     <td>
-                        <button type="button" class="btn btn-success">
-                            Checkout <span class="glyphicon glyphicon-play"></span>
-                        </button></td>
+
+
+                    <td class="col-md-2">
+                        <form action="/checkout" method="POST">
+                            {!! csrf_field() !!}
+                            <script
+                                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                    data-key="pk_test_duCcCwuIqdpydw3NdEVJpMJi"
+                                    data-amount="<?php echo Cart::total()*100; ?>"
+                                    data-name="<?php echo Auth::user(); ?>"
+                                    data-description="Complete Payment"
+                                    data-image=""
+                                    data-locale="auto">
+                            </script>
+                        </form>
+                    </td>
+                    </td>
                 </tr>
                 </tbody>
             </table>

@@ -35,4 +35,13 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    /*
+     * Manually added services
+     */
+    'stripe' => [
+        'model'  => App\User::class,
+        'key'    => 'pk_test_duCcCwuIqdpydw3NdEVJpMJi',
+        'secret' => 'sk_test_VWFffsQVad2H47mkF7Siad13',
+    ],
+
 ];
